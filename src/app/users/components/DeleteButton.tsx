@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import deleteUser from "@/lib/deleteUser";
+import deleteResource from "@/lib/deleteResource";
 import { useRouter } from "next/navigation";
 
 type DeleteButtonProps = {
@@ -11,7 +11,7 @@ type DeleteButtonProps = {
 export function DeleteButton({ userId }: DeleteButtonProps) {
   const router = useRouter();
   const handleDeleteUser = async () => {
-    await deleteUser(userId);
+    await deleteResource("users", userId);
     router.push("/users");
   };
 

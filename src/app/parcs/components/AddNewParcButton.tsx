@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import createParc from "../../../lib/createParc";
+import createResource from "@/lib/createResource";
 import ErrorBoundary from "@/app/ErrorBoundary";
 import { Modal } from "@/app/Modal";
 
@@ -9,7 +9,7 @@ export default function AddParcButton() {
   const [error, setError] = useState<any>(null);
 
   const handleAddParc = async () => {
-    await createParc()
+    await createResource("parcs")
       .then(() => {
         alert("Parc created successfully");
       })

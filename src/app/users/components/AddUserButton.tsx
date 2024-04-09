@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import createUser from "../../../lib/createUser";
+import createResource from "@/lib/createResource";
 import ErrorBoundary from "@/app/ErrorBoundary";
 import { Modal } from "@/app/Modal";
 
@@ -9,7 +9,7 @@ export default function AddUserButton() {
   const [error, setError] = useState<any>(null);
 
   const handleAddUser = async () => {
-    await createUser()
+    await createResource("users")
       .then(() => {
         alert("User created successfully");
       })

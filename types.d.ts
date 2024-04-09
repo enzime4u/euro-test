@@ -22,3 +22,6 @@ type Booking = {
   bookingdate: string;
   comments: string;
 }
+
+
+type ResourceType = "users" | "parcs" | "bookings";

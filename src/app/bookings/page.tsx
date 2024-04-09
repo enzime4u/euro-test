@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import getAllBookings from "@/lib/getAllBookings";
+import getData from "@/lib/getData";
 import ErrorBoundary from "@/app/ErrorBoundary";
 import { Modal } from "@/app/Modal";
 import AddBookingButton from "./components/AddNewBookingButton";
@@ -22,7 +22,7 @@ export default function BookingsPage() {
   const [bookings, setBookings] = React.useState<Booking[]>([]);
   const [error, setError] = React.useState<ErrorProps | null>(null);
   React.useEffect(() => {
-    getAllBookings()
+    getData("bookings")
       .then((response) => {
         setBookings(response.data);
       })

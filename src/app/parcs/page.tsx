@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import getAllParcs from "@/lib/getAllParcs";
+import getData from "@/lib/getData";
 import Link from "next/link";
 import ErrorBoundary from "../ErrorBoundary";
 import { Modal } from "../Modal";
@@ -11,7 +11,7 @@ export default function ParcsPage() {
   const [error, setError] = React.useState<ErrorProps | null>(null);
 
   React.useEffect(() => {
-    getAllParcs()
+    getData("parcs")
       .then((response) => {
         setParcs(response.data);
       })

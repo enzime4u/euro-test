@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import getAllUsers from "@/lib/getAllUsers";
+import getData from "@/lib/getData";
 import AddUserButton from "./components/AddUserButton";
 import ErrorBoundary from "@/app/ErrorBoundary";
 import { Modal } from "@/app/Modal";
@@ -12,7 +12,7 @@ export default function UsersPage() {
   const [error, setError] = React.useState<ErrorProps | null>(null);
 
   React.useEffect(() => {
-    getAllUsers()
+    getData("users")
       .then((response) => {
         setUsers(response.data);
       })

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import createBooking from "../../../lib/createParc";
+import createResource from "@/lib/createResource";
 import ErrorBoundary from "@/app/ErrorBoundary";
 import { Modal } from "@/app/Modal";
 
@@ -9,9 +9,9 @@ export default function AddBookingButton() {
   const [error, setError] = useState<any>(null);
 
   const handleAddBooking = async () => {
-    await createBooking()
+    await createResource("bookings")
       .then(() => {
-        alert("Parc created successfully");
+        alert("Booking created successfully");
       })
       .catch((error) => {
         setError(error);
