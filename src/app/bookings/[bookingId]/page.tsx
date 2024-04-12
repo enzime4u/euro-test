@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import getBooking from "@/lib/getBooking";
+import getData from "@/lib/getData";
 import ErrorBoundary from "@/app/ErrorBoundary";
 import { Modal } from "@/app/Modal";
 
@@ -18,9 +18,9 @@ export default function BookingPage({ params: { bookingId } }: Params) {
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
-    getBooking(bookingId).then((data) => {
-      data.id ? setBooking(data) : setError(data);
-    });
+    getData("bookings", bookingId)
+      .then(setBooking)
+      .catch((err) => setError(err));
   }, [bookingId]);
 
   return (

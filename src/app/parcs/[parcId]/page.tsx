@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import ErrorBoundary from "@/app/ErrorBoundary";
-import getParc from "@/lib/getParc";
+import getData from "@/lib/getData";
 import { Modal } from "@/app/Modal";
 import { DeleteParcButton } from "../components/DeleteParcButton";
 interface ParcPageProps {
@@ -16,7 +16,7 @@ export default function ParcPage({ params: { parcId } }: ParcPageProps) {
   const [error, setError] = useState<ErrorProps | null>(null);
 
   useEffect(() => {
-    getParc(parcId)
+    getData("parcs", parcId)
       .then(setParc)
       .catch((err) => setError(err));
   }, [parcId]);

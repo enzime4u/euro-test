@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import getUser from "../../../lib/getUser";
+import getData from "@/lib/getData";
 import ErrorBoundary from "@/app/ErrorBoundary";
 import { Modal } from "@/app/Modal";
 import { DeleteButton } from "../components/DeleteButton";
@@ -18,7 +18,7 @@ export default function UserPage({ params: { userId } }: Params) {
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
-    getUser(userId)
+    getData("users", userId)
       .then(setUser)
       .catch((err) => setError(err));
   }, [userId]);
